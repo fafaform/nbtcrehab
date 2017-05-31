@@ -6,8 +6,8 @@
   <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">
-        <a class="nav-item is-tab" href="/patients">Patient</a>
         <a class="nav-item is-tab is-active">Device</a>
+        <a class="nav-item is-tab" href="/staffs">Staff</a>
       </div>
 
       <div class="nav-right">
@@ -49,7 +49,7 @@
       <div class="columns">
   @endif
         <div class="column is-one-quarter">
-          <a href="/monitor/{{ encrypt($Patient_ID) }}/{{ encrypt($device->Device_ID) }}">
+          <a href="">
             <p class="notification is-primary has-text-centered">
   @if ($device->Device_ID == 1 || $device->Device_ID == 2 || $device->Device_ID == 3 || $device->Device_ID == 4)
                 <img src="{{ asset('img/A.jpg') }}" width="64" height="64">

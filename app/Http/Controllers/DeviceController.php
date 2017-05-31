@@ -24,32 +24,13 @@ class DeviceController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index($Patient_ID)
+  public function index()
   {
     $devices = array();
 
-    switch (auth()->user()->level) {
-      case 'admin':
-        # code...
-        break;
+    $devices = DB::table('device')->get();
 
-      case 'patient':
-        # code...
-        break;
-
-      default: // staff
-        $devices = DB::table('device')
-          ->join('threshold', 'device.Device_ID', '=', 'threshold.Device_ID')
-          ->groupBy('device.Device_ID')
-          ->groupBy('device.Device_Group')
-          ->where('threshold.Patient_ID', '=', decrypt($Patient_ID))
-          ->get();
-        break;
-    }
-
-    return view('devices')
-      ->with('Patient_ID', decrypt($Patient_ID))
-      ->with('devices', $devices);
+    return view('devices.index')->with('devices', $devices);
   }
 
   /**
@@ -271,5 +252,26 @@ class DeviceController extends Controller
       ->where('device.Device_Group', '=', $Device_Group)
       ->where('device.Action_ID', '=', $Action_ID)
       ->get();
+  }
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function devices_patients($Patient_ID)
+  {
+    $devices = array();
+
+    $devices = DB::table('device')
+      ->join('threshold', 'device.Device_ID', '=', 'threshold.Device_ID')
+      ->groupBy('device.Device_ID')
+      ->groupBy('device.Device_Group')
+      ->where('threshold.Patient_ID', '=', decrypt($Patient_ID))
+      ->get();
+
+    return view('devices.patients')
+      ->with('Patient_ID', decrypt($Patient_ID))
+      ->with('devices', $devices);
   }
 }

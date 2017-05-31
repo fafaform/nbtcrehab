@@ -29,26 +29,15 @@ class PatientController extends Controller
   public function index()
   {
     $patients = array();
-    switch (auth()->user()->level) {
-      case 'admin':
-        # code...
-        break;
 
-      case 'patient':
-        # code...
-        break;
+    $Staff_ID = Staff::where('User_ID', '=', auth()->id())->first()->Staff_ID;
+    $patients = DB::table('patient')
+      ->select('users.*', 'patient.*', 'patient.id AS PatientID')
+      ->join('users', 'users.id', '=', 'patient.User_ID')
+      ->where('patient.Staff_ID', '=', $Staff_ID)
+      ->get();
 
-      default: // staff
-        $Staff_ID = Staff::where('User_ID', '=', auth()->id())->first()->Staff_ID;
-        $patients = DB::table('patient')
-          ->select('users.*', 'patient.*', 'patient.id AS PatientID')
-          ->join('users', 'users.id', '=', 'patient.User_ID')
-          ->where('patient.Staff_ID', '=', $Staff_ID)
-          ->get();
-        break;
-    }
-
-    return view('patients')->with('patients', $patients);
+    return view('patients.index')->with('patients', $patients);
   }
 
   /**
@@ -58,7 +47,7 @@ class PatientController extends Controller
    */
   public function create()
   {
-    return view('patients_create');
+    return view('patients.create');
   }
 
   /**

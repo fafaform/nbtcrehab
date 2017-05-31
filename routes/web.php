@@ -18,13 +18,25 @@ Route::get('/logout', 'IndexController@logout');
 Route::group(['middleware' => 'auth'], function () {
   Route::get('/patients', 'PatientController@index');
   Route::get('/patients/create', 'PatientController@create');
+  Route::post('/patients', 'PatientController@store');
   Route::get('/patients/edit/{id}', 'PatientController@edit');
-  Route::post('/patients/store', 'PatientController@store');
+  Route::put('/patients', 'PatientController@update');
+  Route::delete('/patients', 'PatientController@destroy');
 
   Route::get('/devices', 'DeviceController@index');
+  Route::get('/devices/create', 'DeviceController@create');
+  Route::post('/devices', 'DeviceController@store');
+  Route::get('/devices/edit/{id}', 'DeviceController@edit');
+  Route::put('/devices', 'DeviceController@update');
+  Route::delete('/devices', 'DeviceController@destroy');
   Route::get('/devices/{Patient_ID}', 'DeviceController@devices_patients');
 
   Route::get('/staffs', 'StaffController@index');
+  Route::get('/staffs/create', 'StaffController@create');
+  Route::post('/staffs', 'StaffController@store');
+  Route::get('/staffs/edit/{id}', 'StaffController@edit');
+  Route::put('/staffs', 'StaffController@update');
+  Route::delete('/staffs', 'StaffController@destroy');
 
   Route::get('/monitor/{Patient_ID}/{Device_ID}', 'MonitorController@index');
   Route::post('/monitor/testmail', 'MonitorController@testmail');

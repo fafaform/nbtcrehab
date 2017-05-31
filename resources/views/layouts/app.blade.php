@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ asset('lib/bulma/css/bulma.css') }}?>">
   <style type="text/css">
-    .nav { position: fixed !important; top: 0; left: 0; right: 0; }
+    .nav { position: fixed !important; top: 0; left: 0; right: 0;   opacity: 0.7; }
   </style>
 </head>
 <body>

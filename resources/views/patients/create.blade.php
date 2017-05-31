@@ -43,17 +43,17 @@
         <div class="field">
           <p class="control is-expanded">
             <label class="radio">
-              <input type="radio" name="Patient_Sex">
+              <input type="radio" id="Patient_Sex" name="Patient_Sex">
               ชาย
             </label>
             <label class="radio">
-              <input type="radio" name="Patient_Sex">
+              <input type="radio" id="Patient_Sex" name="Patient_Sex">
               หญิง
             </label>
           </p>
         </div>
         <div class="field">
-          <p class="control is-expanded">
+          <p class="control">
             <input class="input is-large" type="text" id="Patient_Email" name="Patient_Email" placeholder="Patient Email" required>
           </p>
         </div>

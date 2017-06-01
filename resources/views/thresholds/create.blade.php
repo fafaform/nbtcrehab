@@ -6,8 +6,8 @@
   <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">
-        <a class="nav-item is-tab is-active">Device</a>
-        <a class="nav-item is-tab" href="/staffs">Staff</a>
+        <a class="nav-item is-tab" href="/patients">Patient</a>
+        <a class="nav-item is-tab is-active">Create</a>
       </div>
 
       <div class="nav-right">
@@ -26,52 +26,52 @@
   <section class="section">
     <div class="container">
       <br>
-      <h1 class="title has-text-centered">Device Create</h1>
+      <h1 class="title has-text-centered">Patient Create</h1>
       <hr>
 
-      <form action="devices/store" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <form action="patients/store" method="POST">
         <div class="field">
           <p class="control is-expanded">
-            <input class="input is-large" type="text" id="Device_Group" name="Device_Group" placeholder="Device Group" autofocus required>
+            <input class="input is-large" type="text" id="Patient_ID" name="Patient_ID" placeholder="Patient ID" autofocus required>
           </p>
         </div>
         <div class="field">
           <p class="control is-expanded">
-            <input class="input is-large" type="text" id="Device_NO" name="Device_NO" placeholder="Device NO" required>
+            <input class="input is-large" type="text" id="Patient_Name" name="Patient_Name" placeholder="Patient Name" required>
           </p>
         </div>
         <div class="field">
           <p class="control is-expanded">
-            <input class="input is-large" type="text" id="Device_NO" name="Device_NO" placeholder="Device NO" required>
+            <label class="radio">
+              <input type="radio" name="Patient_Sex">
+              ชาย
+            </label>
+            <label class="radio">
+              <input type="radio" name="Patient_Sex">
+              หญิง
+            </label>
           </p>
         </div>
         <div class="field">
           <p class="control is-expanded">
-            <input class="input is-large" type="text" id="Action_ID" name="Action_ID" placeholder="Action ID" required>
+            <input class="input is-large" type="text" id="Patient_Email" name="Patient_Email" placeholder="Patient Email" required>
           </p>
         </div>
         <div class="field">
           <p class="control is-expanded">
-            <input class="input is-large" type="text" id="Device_Desc" name="Device_Desc" placeholder="Device Desc">
+            <input class="input is-large" type="password" id="Patient_Password" name="Patient_Password" placeholder="Patient Password" required>
           </p>
         </div>
         <div class="field">
           <p class="control is-expanded">
-            <input class="input is-large" type="text" id="Action_Desc" name="Action_Desc" placeholder="Action Desc">
+            <input class="input is-large" type="text" id="Patient_Tel" name="Patient_Tel" placeholder="Patient Tel" required>
           </p>
         </div>
         <div class="field">
           <p class="control is-expanded">
-            <input class="input is-large" type="number" id="Measured_Counter" name="Measured_Counter" placeholder="Measured Counter" min="1" max="10" required>
+            <input class="input is-large" type="text" id="Patient_Symtom" name="Patient_Symtom" placeholder="Patient Symtom" required>
           </p>
         </div>
-        <div class="field">
-          <p class="control is-expanded">
-            <input class="input is-large" type="number" id="Threshold_Counter" name="Threshold_Counter" placeholder="Threshold Counter" min="1" max="10" required>
-          </p>
-        </div>
-
         <div class="field">
           <p class="control">
             <button class="button is-success is-large is-fullwidth" type="submit">

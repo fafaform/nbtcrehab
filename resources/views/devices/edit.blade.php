@@ -6,8 +6,8 @@
   <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">
-        <a class="nav-item is-tab" href="/patients">Patient</a>
-        <a class="nav-item is-tab is-active">Create</a>
+        <a class="nav-item is-tab is-active">Device</a>
+        <a class="nav-item is-tab" href="/staffs">Staff</a>
       </div>
 
       <div class="nav-right">
@@ -30,6 +30,8 @@
       <hr>
 
       <form action="patients/store" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="field">
           <p class="control is-expanded">
             <input class="input is-large" type="text" id="Patient_ID" name="Patient_ID" placeholder="Patient ID" autofocus required>

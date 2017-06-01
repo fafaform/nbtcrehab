@@ -55,6 +55,8 @@
   @endif
               <br>
               {{ $device->Device_Desc }}
+              <br>
+              {{ $device->Action_Desc }}
             </p>
           </a>
         </div>

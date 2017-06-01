@@ -6,8 +6,7 @@
   <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">
-        <a class="nav-item is-tab" href="/devices">Device</a>
-        <a class="nav-item is-tab is-active">Staff</a>
+        <a class="nav-item is-tab is-active">Patient</a>
       </div>
 
       <div class="nav-right">
@@ -26,18 +25,18 @@
   <section class="section">
     <div class="container">
       <br>
-      <h1 class="title has-text-centered">Staff</h1>
+      <h1 class="title has-text-centered">Patient</h1>
       <hr>
 
       <div class="columns">
         <div class="column is-one-quarter">
-          <a href="/staffs/create">
+          <a href="/patients/create">
             <p class="notification is-success has-text-centered">   
               <span class="icon is-large">
                 <i class="fa fa-plus"></i>
               </span>
               <br />
-              Add new Staff
+              Add new Patient
             </p>
           </a>
         </div>
@@ -46,27 +45,27 @@
 @php
   $count = 1;
 @endphp
-@foreach ($staffs as $staff)
+@foreach ($patients as $patient)
   @if (($count == 1) || (($count % 4) == 1))
       <div class="columns">
   @endif
         <div class="column is-one-quarter">
-          <a href="/staffs/{{ encrypt($staff->id) }}">
+          <a href="/devices/{{ encrypt($patient->Patient_ID) }}">
             <p class="notification is-primary has-text-centered">
               <span class="icon is-large">
                 <i class="fa fa-user"></i>
               </span>
               <br />
-              {{ $staff->name }}
+              {{ $patient->Patient_ID }}
               <br />
-              {{ $staff->email }}
+              {{ $patient->name }}
             </p>
           </a>
         </div>
   @if ((($count % 4) == 0))
       </div>
   @endif
-  @if ($count == count($staffs))
+  @if ($count == count($patients))
       </div>
   @endif
   @php

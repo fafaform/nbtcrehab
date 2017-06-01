@@ -40,15 +40,15 @@ class IndexController extends Controller
         // Authentication passed...
         switch (auth()->user()->level) {
           case 'admin':
-            return redirect()->intended('devices');
+            return redirect()->intended('/devices');
             break;
 
           case 'patient':
-            return redirect()->intended('devices/' . encrypt(Patient::where('User_ID', '=', auth()->id())->first()['Patient_ID']) );
+            return redirect()->intended('/devices/' . encrypt(Patient::where('User_ID', '=', auth()->id())->first()['Patient_ID']) );
             break;
 
           default: // staff
-            return redirect()->intended('patients');
+            return redirect()->intended('/patients');
             break;
         }
     } else {

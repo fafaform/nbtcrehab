@@ -31,13 +31,15 @@
 
       <div class="columns">
         <div class="column is-one-quarter">
-          <p class="notification is-success has-text-centered">   
-            <span class="icon is-large">
-              <i class="fa fa-plus"></i>
-            </span>
-            <br />
-            Add new Device
-          </p>
+          <a href="/devices/create">
+            <p class="notification is-success has-text-centered">   
+              <span class="icon is-large">
+                <i class="fa fa-plus"></i>
+              </span>
+              <br />
+              Add new Device
+            </p>
+          </a>
         </div>
       </div>
       
@@ -45,13 +47,19 @@
   $count = 1;
 @endphp
 @foreach ($devices as $device)
-  @if (($count == 1) || (($count % 4) == 1))
+  @if (($count == 1) || (($count % 3) == 1))
       <div class="columns">
   @endif
-        <div class="column is-one-quarter">
-          <a href="">
-            <p class="notification is-primary has-text-centered">
-  @if ($device->Device_ID == 1 || $device->Device_ID == 2 || $device->Device_ID == 3 || $device->Device_ID == 4)
+        <div class="column is-one-third">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{ $device->Device_Desc }}
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content has-text-centered">
+  <!-- @if ($device->Device_ID == 1 || $device->Device_ID == 2 || $device->Device_ID == 3 || $device->Device_ID == 4)
                 <img src="{{ asset('img/A.jpg') }}" width="64" height="64">
   @endif
   @if ($device->Device_ID == 5 || $device->Device_ID == 6)
@@ -65,13 +73,19 @@
   @endif
   @if ($device->Device_ID == 16 || $device->Device_ID == 17)
                 <img src="{{ asset('img/E.jpg') }}" width="64" height="64">
-  @endif
-              <br>
-              {{ $device->Device_Desc }}
-            </p>
-          </a>
+  @endif -->
+                <br>
+                {{ $device->Action_Desc }}
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="card-footer-item" href="/devices/{{ encrypt($device->Device_ID) }}">View</a>
+              <a class="card-footer-item" href="/devices/{{ encrypt($device->Device_ID) }}/edit">Edit</a>
+              <a class="card-footer-item" href="/devices/{{ encrypt($device->Device_ID) }}">Delete</a>
+            </footer>
+          </div>
         </div>
-  @if ((($count % 4) == 0))
+  @if ((($count % 3) == 0))
       </div>
   @endif
   @if ($count == count($devices))
